@@ -21,7 +21,8 @@ jobs: # Define os "trabalhos" que o workflow vai executar
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
       with:
-        context: . # Usa o contexto atual para o build
+        context: ./hello-app # Usa o contexto atual para o build
+        file: ./hello-app/Dockerfile
         push: true # Define que a imagem será enviada para o registro
         tags: ${{ secrets.DOCKER_USERNAME }}/hello-app:${{ github.sha }} # Define a tag da imagem
 
